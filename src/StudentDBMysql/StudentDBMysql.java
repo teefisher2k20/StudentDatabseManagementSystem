@@ -474,6 +474,11 @@ public class StudentDBMysql extends javax.swing.JFrame {
 
         btnUpdate.setFont(new java.awt.Font("Tahoma", 1, 38)); // NOI18N
         btnUpdate.setText("Update");
+        btnUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUpdateMouseClicked(evt);
+            }
+        });
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
@@ -572,10 +577,56 @@ public class StudentDBMysql extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddNewActionPerformed
          catch (ClassNotFoundException | SQLException ex) {
             java.util.logging.Logger.getLogger(StudentDBMysql.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            //System.err.println(ex);
         }
     }
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel RecordTable = (DefaultTableModel)jTable2.getModel();
+        int SelectedRows = jTable2.getSelectedRow();
+        
+        try
+        {
+            int id = Integer.parseInt(RecordTable.getValueAt(SelectedRows, 0).toString());
+            Class.forName("com.mysql.jdbc.Driver");
+            sqlConn = DriverManager.getConnection(dataConn,username,password);
+            try {
+                pst = sqlConn.prepareStatement("update studentdata set studentid =?, firstname=?"
+                        + "lastname=?, address=?, gender=?, phone=?, math=?, games=?, datasci=?, analysis=?, graphic=?,"
+                        + "database1=?, science=?, english=? where id=?");
+            } catch (SQLException ex) {
+                Logger.getLogger(StudentDBMysql.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            pst.setString(1, txtStudentID.getText());
+            pst.setString(2, txtFirstName.getText());
+            pst.setString(3, txtLastName.getText());
+            pst.setString(4, txtAddress.getText());
+            pst.setString(5, (String)cboGender.getSelectedItem());
+            pst.setString(6, txtPhone.getText());
+            pst.setString(7, (String)cboMath.getSelectedItem());
+            pst.setString(8, (String)cboGames.getSelectedItem());
+            pst.setString(9, (String)cboDataSci.getSelectedItem());
+            pst.setString(10, (String)cboAnalysis.getSelectedItem());
+            pst.setString(11, (String)cboGraphic.getSelectedItem());
+            pst.setString(12, (String)cboDatabase.getSelectedItem());
+            pst.setString(13, (String)cboScience.getSelectedItem());
+            pst.setString(14, (String)cboEnglish.getSelectedItem());
+            pst.setInt(15, id);
+            
+            
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Student Record Updated");
+            updateDB();
+           
+            
+            
+    }                                         
+         catch (ClassNotFoundException | SQLException ex) {
+            java.util.logging.Logger.getLogger(StudentDBMysql.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            System.err.println(ex);
+        }
+        
+            
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
@@ -590,6 +641,27 @@ private JFrame frame;
         }
         
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateMouseClicked
+        DefaultTableModel RecordTable = (DefaultTableModel)jTable2.getModel();
+        int SelectedRows = jTable2.getSelectedRow();
+        
+        txtStudentID.setText(RecordTable.getValueAt(SelectedRows, 1).toString());
+        txtFirstName.setText(RecordTable.getValueAt(SelectedRows, 2).toString());
+        txtLastName.setText(RecordTable.getValueAt(SelectedRows, 3).toString());
+        txtAddress.setText(RecordTable.getValueAt(SelectedRows, 4).toString());
+        cboGender.setSelectedItem(RecordTable.getValueAt(SelectedRows, 5).toString());
+        txtPhone.setText(RecordTable.getValueAt(SelectedRows, 6).toString());
+        cboMath.setSelectedItem(RecordTable.getValueAt(SelectedRows, 7).toString());
+        cboGames.setSelectedItem(RecordTable.getValueAt(SelectedRows, 8).toString());
+        cboDataSci.setSelectedItem(RecordTable.getValueAt(SelectedRows, 9).toString());
+        cboAnalysis.setSelectedItem(RecordTable.getValueAt(SelectedRows, 10).toString());
+        cboGraphic.setSelectedItem(RecordTable.getValueAt(SelectedRows, 11).toString());
+        cboDatabase.setSelectedItem(RecordTable.getValueAt(SelectedRows, 12).toString());
+        cboScience.setSelectedItem(RecordTable.getValueAt(SelectedRows, 13).toString());
+        cboEnglish.setSelectedItem(RecordTable.getValueAt(SelectedRows, 14).toString());
+            
+    }//GEN-LAST:event_btnUpdateMouseClicked
 
     /**
      * @param args the command line arguments
