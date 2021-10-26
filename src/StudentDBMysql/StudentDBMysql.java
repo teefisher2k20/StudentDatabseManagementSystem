@@ -19,6 +19,7 @@ import java.sql.DriverManager;
 import java.text.MessageFormat;
 import java.util.Vector;
 import javax.swing.JTable;
+
 /**
  *
  * @author Jorda
@@ -438,6 +439,11 @@ public class StudentDBMysql extends javax.swing.JFrame {
 
         btnReset.setFont(new java.awt.Font("Tahoma", 1, 38)); // NOI18N
         btnReset.setText("Reset");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
         jPanel5.add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 220, -1));
 
         btnAddNew.setFont(new java.awt.Font("Tahoma", 1, 38)); // NOI18N
@@ -451,6 +457,11 @@ public class StudentDBMysql extends javax.swing.JFrame {
 
         btnDelete.setFont(new java.awt.Font("Tahoma", 1, 38)); // NOI18N
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
         jPanel5.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 20, 210, -1));
 
         btnExit.setFont(new java.awt.Font("Tahoma", 1, 38)); // NOI18N
@@ -635,7 +646,14 @@ public class StudentDBMysql extends javax.swing.JFrame {
                MessageFormat header = new MessageFormat("Printing in progress");
                MessageFormat footer = new MessageFormat("Page (0, number, integer)");
                
-               JTable2.print(JTable.PrintMode.NORMAL, header, footer);    
+             //  try
+             //  {
+              //     JTable2.print(JTable.PrintMode.NORMAL, header, footer);
+              // }
+              // catch(java.awt.print.PrinterException e)
+             //  {
+              //     System.err.format("No printer found", e.getMessage());
+              // }    
                
                        
     }//GEN-LAST:event_btnPrintActionPerformed
@@ -669,6 +687,79 @@ private JFrame frame;
         cboEnglish.setSelectedItem(RecordTable.getValueAt(SelectedRows, 14).toString());
             
     }//GEN-LAST:event_btnUpdateMouseClicked
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        txtStudentID.setText("");
+        txtFirstName.setText("");
+        txtLastName.setText("");
+        txtAddress.setText("");
+        cboGender.setSelectedIndex(0);
+        txtPhone.setText("");
+        cboMath.setSelectedIndex(0);
+        cboGames.setSelectedIndex(0);
+        cboDataSci.setSelectedIndex(0);
+        cboAnalysis.setSelectedIndex(0);
+        cboGraphic.setSelectedIndex(0);
+        cboDatabase.setSelectedIndex(0);
+        cboScience.setSelectedIndex(0);
+        cboEnglish.setSelectedIndex(0);
+        
+        DefaultTableModel RecordTable = (DefaultTableModel)jTable2.getModel();
+        int SelectedRows = jTable2.getSelectedRow();
+    }//GEN-LAST:event_btnResetActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+         DefaultTableModel RecordTable = (DefaultTableModel)jTable2.getModel();
+        int SelectedRows = jTable2.getSelectedRow();
+        
+        try
+        {
+            int id = Integer.parseInt(RecordTable.getValueAt(SelectedRows, 0).toString());
+            
+            int deleteItem = JOptionPane.showConfirmDialog(null, "confirm if you want to delete item", "Warning", JOptionPane.YES_NO_OPTION);
+                if (deleteItem == JOptionPane.YES_OPTION)
+                {
+                    //YES_NO_OPTION)==JOptionPane.YES_NO_OPTION)
+            
+            Class.forName("com.mysql.jdbc.Driver");
+            sqlConn = DriverManager.getConnection(dataConn,username,password);
+            try {
+                pst = sqlConn.prepareStatement("delete from studentdata where id=?");
+            } catch (SQLException ex) {
+                Logger.getLogger(StudentDBMysql.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            pst.setInt(1, id);
+             pst.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Student Record Updated");
+            updateDB();
+
+                txtStudentID.setText("");
+                txtFirstName.setText("");
+                txtLastName.setText("");
+                txtAddress.setText("");
+                cboGender.setSelectedIndex(0);
+                txtPhone.setText("");
+                cboMath.setSelectedIndex(0);
+                cboGames.setSelectedIndex(0);
+                cboDataSci.setSelectedIndex(0);
+                cboAnalysis.setSelectedIndex(0);
+                cboGraphic.setSelectedIndex(0);
+                cboDatabase.setSelectedIndex(0);
+                cboScience.setSelectedIndex(0);
+                cboEnglish.setSelectedIndex(0);
+                }
+            
+           
+           
+            
+            
+    }                                         
+         catch (ClassNotFoundException | SQLException ex) {
+            java.util.logging.Logger.getLogger(StudentDBMysql.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            System.err.println(ex);
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
