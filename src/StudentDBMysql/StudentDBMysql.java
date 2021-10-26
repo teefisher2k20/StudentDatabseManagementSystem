@@ -16,7 +16,9 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.DriverManager;
+import java.text.MessageFormat;
 import java.util.Vector;
+import javax.swing.JTable;
 /**
  *
  * @author Jorda
@@ -630,7 +632,12 @@ public class StudentDBMysql extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
-        // TODO add your handling code here:
+               MessageFormat header = new MessageFormat("Printing in progress");
+               MessageFormat footer = new MessageFormat("Page (0, number, integer)");
+               
+               JTable2.print(JTable.PrintMode.NORMAL, header, footer);    
+               
+                       
     }//GEN-LAST:event_btnPrintActionPerformed
 private JFrame frame;
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
