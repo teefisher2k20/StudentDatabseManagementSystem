@@ -151,7 +151,6 @@ public class StudentDBMysql extends javax.swing.JFrame {
         jButton26 = new javax.swing.JButton();
         jButton27 = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
-        btnPrint = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -226,7 +225,7 @@ public class StudentDBMysql extends javax.swing.JFrame {
         jLabel8.setText("Math");
 
         cboMath.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        cboMath.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes", "Core unit", "Complete" }));
+        cboMath.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Passed", "Failed", "incomplete" }));
         cboMath.setName(""); // NOI18N
         cboMath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -235,7 +234,7 @@ public class StudentDBMysql extends javax.swing.JFrame {
         });
 
         cboGames.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        cboGames.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes", "Core unit", "Complete" }));
+        cboGames.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Passed", "Failed", "incomplete" }));
         cboGames.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboGamesActionPerformed(evt);
@@ -243,10 +242,10 @@ public class StudentDBMysql extends javax.swing.JFrame {
         });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel9.setText("Analysis");
+        jLabel9.setText("Coding");
 
         cboAnalysis.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        cboAnalysis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes", "Core unit", "Complete" }));
+        cboAnalysis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Passed", "Failed", "incomplete" }));
         cboAnalysis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboAnalysisActionPerformed(evt);
@@ -257,10 +256,10 @@ public class StudentDBMysql extends javax.swing.JFrame {
         jLabel10.setText("Data Sci");
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel11.setText("Games");
+        jLabel11.setText("Art");
 
         cboDataSci.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        cboDataSci.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes", "Core unit", "Complete" }));
+        cboDataSci.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Passed", "Failed", "incomplete" }));
         cboDataSci.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboDataSciActionPerformed(evt);
@@ -285,7 +284,7 @@ public class StudentDBMysql extends javax.swing.JFrame {
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
                             .addComponent(jLabel10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(cboDataSci, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel9)
@@ -324,7 +323,7 @@ public class StudentDBMysql extends javax.swing.JFrame {
         jLabel15.setText("English");
 
         cboGraphic.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        cboGraphic.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes", "Core unit", "Complete" }));
+        cboGraphic.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Passed", "Failed", "incomplete" }));
         cboGraphic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboGraphicActionPerformed(evt);
@@ -332,7 +331,7 @@ public class StudentDBMysql extends javax.swing.JFrame {
         });
 
         cboEnglish.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        cboEnglish.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes", "Core unit", "Complete" }));
+        cboEnglish.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Passed", "Failed", "incomplete" }));
         cboEnglish.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboEnglishActionPerformed(evt);
@@ -343,7 +342,7 @@ public class StudentDBMysql extends javax.swing.JFrame {
         jLabel14.setText("Science");
 
         cboDatabase.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        cboDatabase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes", "Core unit", "Complete" }));
+        cboDatabase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Passed", "Failed", "incomplete" }));
         cboDatabase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboDatabaseActionPerformed(evt);
@@ -351,7 +350,7 @@ public class StudentDBMysql extends javax.swing.JFrame {
         });
 
         cboScience.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        cboScience.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes", "Core unit", "Complete" }));
+        cboScience.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Passed", "Failed", "incomplete" }));
         cboScience.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboScienceActionPerformed(evt);
@@ -382,7 +381,7 @@ public class StudentDBMysql extends javax.swing.JFrame {
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13)
                             .addComponent(jLabel14))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cboScience, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel15)
@@ -444,7 +443,7 @@ public class StudentDBMysql extends javax.swing.JFrame {
                 btnResetActionPerformed(evt);
             }
         });
-        jPanel5.add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 220, -1));
+        jPanel5.add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 220, 60));
 
         btnAddNew.setFont(new java.awt.Font("Tahoma", 1, 38)); // NOI18N
         btnAddNew.setText("Add New");
@@ -453,7 +452,7 @@ public class StudentDBMysql extends javax.swing.JFrame {
                 btnAddNewActionPerformed(evt);
             }
         });
-        jPanel5.add(btnAddNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        jPanel5.add(btnAddNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, 60));
 
         btnDelete.setFont(new java.awt.Font("Tahoma", 1, 38)); // NOI18N
         btnDelete.setText("Delete");
@@ -462,7 +461,7 @@ public class StudentDBMysql extends javax.swing.JFrame {
                 btnDeleteActionPerformed(evt);
             }
         });
-        jPanel5.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 20, 210, -1));
+        jPanel5.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 20, 210, 60));
 
         btnExit.setFont(new java.awt.Font("Tahoma", 1, 38)); // NOI18N
         btnExit.setText("Exit");
@@ -471,7 +470,7 @@ public class StudentDBMysql extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
-        jPanel5.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 20, 190, -1));
+        jPanel5.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 20, 190, 60));
 
         jButton25.setFont(new java.awt.Font("Tahoma", 0, 38)); // NOI18N
         jButton25.setText("jButton1");
@@ -497,16 +496,7 @@ public class StudentDBMysql extends javax.swing.JFrame {
                 btnUpdateActionPerformed(evt);
             }
         });
-        jPanel5.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, 230, -1));
-
-        btnPrint.setFont(new java.awt.Font("Tahoma", 1, 38)); // NOI18N
-        btnPrint.setText("Print");
-        btnPrint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrintActionPerformed(evt);
-            }
-        });
-        jPanel5.add(btnPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 220, -1));
+        jPanel5.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 230, 60));
 
         jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 1380, 110));
 
@@ -641,22 +631,6 @@ public class StudentDBMysql extends javax.swing.JFrame {
         
             
     }//GEN-LAST:event_btnUpdateActionPerformed
-
-    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
-               MessageFormat header = new MessageFormat("Printing in progress");
-               MessageFormat footer = new MessageFormat("Page (0, number, integer)");
-               
-             //  try
-             //  {
-              //     JTable2.print(JTable.PrintMode.NORMAL, header, footer);
-              // }
-              // catch(java.awt.print.PrinterException e)
-             //  {
-              //     System.err.format("No printer found", e.getMessage());
-              // }    
-               
-                       
-    }//GEN-LAST:event_btnPrintActionPerformed
 private JFrame frame;
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         frame = new JFrame("Exit");
@@ -794,7 +768,6 @@ private JFrame frame;
     private javax.swing.JButton btnAddNew;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnExit;
-    private javax.swing.JButton btnPrint;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cboAnalysis;
